@@ -9,7 +9,7 @@ import asyncio
 # from discord_slash import SlashCommand, SlashContext
 
 
-client = commands.Bot(command_prefix="t", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 data = "message.json"
 warn_data = "warn.json"
 grole_data = "grole.json"
