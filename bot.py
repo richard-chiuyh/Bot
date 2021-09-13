@@ -66,14 +66,14 @@ async def checklevel(chat_data,new_user,guild):
         else:
             await member.add_roles(role)
         await channel.send("恭喜 "+member.display_name+" 已获得足够活跃度并成为会员！祝你身体健康，保持活跃！")
-    if chat_data[new_user] >= 5000:
-        member = guild.get_member(int(new_user))
-        role = guild.get_role(885731375372705803)
-        if role in member.roles:
-            return
-        else:
-            await member.add_roles(role)
-        await channel.send("恭喜 "+member.display_name+" 已获得足够活跃度并成为高级会员！祝你身体健康，保持活跃！")
+#     if chat_data[new_user] >= 5000:
+#         member = guild.get_member(int(new_user))
+#         role = guild.get_role(885731375372705803)
+#         if role in member.roles:
+#             return
+#         else:
+#             await member.add_roles(role)
+#         await channel.send("恭喜 "+member.display_name+" 已获得足够活跃度并成为高级会员！祝你身体健康，保持活跃！")
 
 @client.command()
 async def tag(ctx):
