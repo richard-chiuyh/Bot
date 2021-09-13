@@ -18,7 +18,7 @@ voice = {}
 admin = 885138315370692638
 class channelid:
     levelchannel = 653862558045831169
-    get_tag = 885981121534390302
+    get_tag = 886948326442950746
     admin_channel = 883851550768893952
 
 @client.event
