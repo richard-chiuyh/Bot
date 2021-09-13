@@ -294,4 +294,4 @@ async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
 #     if member != message.author:
 #         await warn(message,message,"不合规语句")
 
-client.run("ODUxOTk3OTk2MzA3OTcyMTI3.YMAa9w.g5r-LxxZnBPh75tpRopmhuXYnho")
+client.run("ODg2NjE4MTY2Nzk1NTk5OTEy.YT4Ngw.iWxWLLtwN3vcO2jgCuQnRJYW8Rw")
