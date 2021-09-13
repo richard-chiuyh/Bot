@@ -9,20 +9,25 @@ import asyncio
 # from discord_slash import SlashCommand, SlashContext
 
 
-client = commands.Bot(command_prefix="!", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="t", intents = discord.Intents.all())
 data = "message.json"
 warn_data = "warn.json"
 grole_data = "grole.json"
 rrole_data = "rrole.json"
 voice = {}
+admin = 885138315370692638
 class channelid:
     levelchannel = 885735656557527081
     get_tag = 885981121534390302
     admin_channel = 885507212280205322
 
-class roleid:
-    admin = 885138315370692638
-    mute = 886441347844816966
+@client.event
+async def on_ready():
+    for guild in client.guilds:
+        for role in guild.roles:
+            if role.name == "频道管理员":
+                global admin
+                admin = role.id
 
 async def count(data,member,x=1):
     with open(data, 'r') as file:
@@ -75,6 +80,7 @@ async def tag(ctx):
     channel = ctx.guild.get_channel(channelid.get_tag)
     game = discord.Embed(description="请选择你游玩的游戏从而获得对应游戏的身分组（点击下方对应游戏图标）")
     game.set_footer(text="若没有你目前游玩游戏的图标请与管理员联系")
+    global game_m
     game_m = await channel.send(embed=game)
     with open(grole_data, 'r') as gfile:
         game_data = json.load(gfile)
@@ -83,11 +89,39 @@ async def tag(ctx):
 
     region = discord.Embed(description="请选择你目前所在的地区从而获得对应的身分组（点击下方对应旗帜图标）")
     region.set_footer(text="若没有你目前所在地区的旗帜请与管理员联系")
+    global region_m
     region_m = await channel.send(embed=region)
     with open(rrole_data, 'r') as rfile:
         region_data = json.load(rfile)
     for emoji in region_data:
         await region_m.add_reaction(emoji)
+
+@client.command()
+async def addgametag(ctx,tagid,emoji):
+    with open(grole_data, 'r') as gfile:
+        game_data = json.load(gfile)
+        if str(emoji) in game_data:
+            return
+        else:
+            game_data[str(emoji)] = int(tagid)
+            with open(grole_data, 'w') as new_data:
+                json.dump(game_data, new_data, indent=4)
+            await game_m.add_reaction(emoji)
+            await ctx.send("新游戏tag已成功加入列表")
+            
+
+@client.command()
+async def addregiontag(ctx,tagid,emoji):
+    with open(rrole_data, 'r') as rfile:
+        region_data = json.load(rfile)
+        if str(emoji) in region_data:
+            return
+        else:
+            region_data[str(emoji)] = int(tagid)
+            with open(rrole_data, 'w') as new_data:
+                json.dump(region_data, new_data, indent=4)
+            await region_m.add_reaction(emoji)
+            await ctx.send("新国家tag已成功加入列表")
 
 @client.command()
 async def warn(ctx,message,reason="未提供"):
@@ -190,7 +224,7 @@ async def on_reaction_add(reaction,user):
     if user.bot:
         return
     if reaction.emoji == ('🙅‍♂️'):
-        if user.guild.get_role(roleid.admin) in user.roles:
+        if user.guild.get_role(admin) in user.roles:
             await warn(reaction.message,reaction.message,"不合规语句")
     
     emoji = str(reaction.emoji)
@@ -260,4 +294,4 @@ async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
 #     if member != message.author:
 #         await warn(message,message,"不合规语句")
 
-client.run("ODg2NjE4MTY2Nzk1NTk5OTEy.YT4Ngw.iWxWLLtwN3vcO2jgCuQnRJYW8Rw")
+client.run("ODUxOTk3OTk2MzA3OTcyMTI3.YMAa9w.g5r-LxxZnBPh75tpRopmhuXYnho")
