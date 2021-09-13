@@ -216,7 +216,7 @@ async def on_voice_state_update(member,before,after):
         voice[member.id] = datetime.now()
     if before.channel != None and after.channel == None:
         dt = datetime.now() - voice[member.id]
-        x = int(dt/timedelta(seconds = 1))*6
+        x = int(dt/timedelta(minutes = 1))*6
         await count(data,member,x)
 
 @client.event
