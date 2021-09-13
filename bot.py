@@ -17,9 +17,9 @@ rrole_data = "rrole.json"
 voice = {}
 admin = 885138315370692638
 class channelid:
-    levelchannel = 885735656557527081
+    levelchannel = 653862558045831169
     get_tag = 885981121534390302
-    admin_channel = 885507212280205322
+    admin_channel = 883851550768893952
 
 @client.event
 async def on_ready():
