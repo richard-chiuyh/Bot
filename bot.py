@@ -9,7 +9,7 @@ import asyncio
 # from discord_slash import SlashCommand, SlashContext
 
 
-client = commands.Bot(command_prefix="!F", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 data = "message.json"
 warn_data = "warn.json"
 grole_data = "grole.json"
@@ -146,7 +146,7 @@ async def warn(ctx,message,reason="未提供"):
     
 
 @client.command()
-async def zd(ctx,*,text):
+async def F(ctx,*,text):
     if(ctx.author.voice):
         channel = ctx.author.voice.channel
         name = channel.name
