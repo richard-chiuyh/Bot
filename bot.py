@@ -9,7 +9,7 @@ import asyncio
 # from discord_slash import SlashCommand, SlashContext
 
 
-client = commands.Bot(command_prefix="!", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="!F", intents = discord.Intents.all())
 data = "message.json"
 warn_data = "warn.json"
 grole_data = "grole.json"
@@ -45,15 +45,16 @@ async def count(data,member,x=1):
             json.dump(chat_data, new_user_data, indent=4)
 
 async def checkwarn(chat_data,new_user,guild):
-    channel = guild.get_channel(channelid.admin_channel)
-    member = await guild.fetch_member(new_user)
-    if chat_data[new_user] == 3:
-        await tempmute(channel,member,7,"d",reason = "已被警告三次")
-    if chat_data[new_user] == 5:
-        await member.ban(reason="已被警告五次")
-        chat_data[new_user] = 0
-        with open(data, 'w') as new_user_data:
-            json.dump(chat_data, new_user_data, indent=4)
+    return
+#     channel = guild.get_channel(channelid.admin_channel)
+#     member = await guild.fetch_member(new_user)
+#     if chat_data[new_user] == 3:
+#         await tempmute(channel,member,7,"d",reason = "已被警告三次")
+#     if chat_data[new_user] == 5:
+#         await member.ban(reason="已被警告五次")
+#         chat_data[new_user] = 0
+#         with open(data, 'w') as new_user_data:
+#             json.dump(chat_data, new_user_data, indent=4)
 
 
 async def checklevel(chat_data,new_user,guild):
@@ -125,22 +126,23 @@ async def addregiontag(ctx,tagid,emoji):
 
 @client.command()
 async def warn(ctx,message,reason="未提供"):
-    member = message.author
-    await count(warn_data,message.author)
-    with open(warn_data, 'r') as file:
-        chat_data = json.load(file)
-        new_user = str(member.id)
+    return
+#     member = message.author
+#     await count(warn_data,message.author)
+#     with open(warn_data, 'r') as file:
+#         chat_data = json.load(file)
+#         new_user = str(member.id)
 
-    embed = discord.Embed(
-        title="原因："+reason,
-        description="违规语句："+message.content + "\n" +"累计警告次数：" + str(chat_data[new_user]),
-        colour=discord.Colour.red(),
-    )
-    embed.set_author(name=member.name+"已被警告",icon_url=member.avatar_url)
-    embed.set_footer(text="多次警告可能导致禁言甚至封禁，如果对警告有疑问请联系管理员")
-    await ctx.reply(embed=embed)
-    await message.delete()
-    await checkwarn(chat_data,new_user,message.guild)
+#     embed = discord.Embed(
+#         title="原因："+reason,
+#         description="违规语句："+message.content + "\n" +"累计警告次数：" + str(chat_data[new_user]),
+#         colour=discord.Colour.red(),
+#     )
+#     embed.set_author(name=member.name+"已被警告",icon_url=member.avatar_url)
+#     embed.set_footer(text="多次警告可能导致禁言甚至封禁，如果对警告有疑问请联系管理员")
+#     await ctx.reply(embed=embed)
+#     await message.delete()
+#     await checkwarn(chat_data,new_user,message.guild)
     
 
 @client.command()
@@ -154,7 +156,8 @@ async def zd(ctx,*,text):
         embed.description = text+"\n"+link
         await ctx.send(embed=embed)
     else:
-        await warn(ctx,ctx.message,"不规范使用指令")
+        return
+#         await warn(ctx,ctx.message,"不规范使用指令")
 
 @client.command()
 async def rank(ctx):
