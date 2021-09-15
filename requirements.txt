@@ -1,0 +1,7 @@
+jsonpatch==1.22                
+jsonpointer==2.0                 
+jsonschema==3.2.0
+discord.py==1.7.3
+tabulate==0.8.9
+easy-pil==0.0.9
+python-dotenv==0.19.0
