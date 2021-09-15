@@ -16,7 +16,7 @@ class tag(commands.Cog):
     @commands.command()
     async def tag(self,ctx):
         for channel in ctx.guild.channels:
-            if channel.name == "领取tag":
+            if channel.name == "📬领取𝖳𝖠𝖦🎫":
                 tag_channel = channel.id
         
         channel = ctx.guild.get_channel(tag_channel)
