@@ -87,7 +87,8 @@ class main(commands.Cog):
             embed.description = text+"\n"+link
             await ctx.send(embed=embed)
         else:
-            await self.warn(ctx,ctx.message,"不规范使用指令")
+            return
+#             await self.warn(ctx,ctx.message,"不规范使用指令")
 
     @commands.command()
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
