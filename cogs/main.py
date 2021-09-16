@@ -11,6 +11,10 @@ grole_data = "grole.json"
 rrole_data = "rrole.json"
 data = "message.json"
 warn_data = "warn.json"
+admin = 471396850625151075
+admin_channel = 883851550768893952
+tag_channel = 886948326442950746
+level_channel = 886948052026400820
 
 def setup(client):
     client.add_cog(main(client))
@@ -18,25 +22,6 @@ def setup(client):
 class main(commands.Cog):
     def __init__(self,client):
         self.client = client
-    
-    @commands.Cog.listener()
-    async def on_ready(self):
-        for guild in self.client.guilds:
-            for role in guild.roles:
-                if role.name == "频道管理员":
-                    global admin
-                    admin = role.id
-
-            for channel in guild.channels:
-                if channel.name == "管理员":
-                    global admin_channel
-                    admin_channel = channel.id
-                if channel.name == "领取tag":
-                    global tag_channel
-                    tag_channel = channel.id
-                if channel.name == "等级查询":
-                    global level_channel
-                    level_channel = channel.id
 
     async def count(self,data,member,x=1):
         with open(data, 'r') as file:
@@ -69,7 +54,7 @@ class main(commands.Cog):
         channel = guild.get_channel(level_channel)
         if chat_data[new_user] >= 3000:
             member = guild.get_member(int(new_user))
-            role = guild.get_role(885731265926541384)
+            role = guild.get_role(888032719144120381)
             if role in member.roles:
                 return
             else:
@@ -87,8 +72,7 @@ class main(commands.Cog):
             embed.description = text+"\n"+link
             await ctx.send(embed=embed)
         else:
-            return
-#             await self.warn(ctx,ctx.message,"不规范使用指令")
+            await ctx.send("请加入语音频道后再使用该指令")
 
     @commands.command()
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
