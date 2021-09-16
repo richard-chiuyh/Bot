@@ -17,7 +17,7 @@ rrole_data = "rrole.json"
 @client.event
 async def on_ready():
     for x in client.guilds:
-        if x.name == "游戏社区":
+        if x.name == "𝓛𝓸𝓫𝓫𝔂-电竞频道":
             guild = x
     channel = guild.get_channel(tag_channel)
     with open(grole_data, 'r') as gfile:
