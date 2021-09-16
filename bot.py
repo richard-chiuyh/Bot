@@ -71,7 +71,7 @@ async def addtag(ctx,mode,name,emoji):
             for role in ctx.guild.roles:
                 if role.name == name:
                     tag_data[str(emoji)] = int(role.id)
-                    with open(rrole_data, 'w') as new_data:
+                    with open(data, 'w') as new_data:
                         json.dump(tag_data, new_data, indent=4)
                     with open(data, 'r') as file:
                         new_data = json.load(file)
