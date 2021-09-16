@@ -49,7 +49,7 @@ class tag(commands.Cog):
         with open(data, 'r') as file:
             tag_data = json.load(file)
             if str(emoji) in tag_data:
-                ctx.send("该tag已在库中")
+                tag_data[str(emoji)] = int(role.id)
                 return
             else:
                 for role in ctx.guild.roles:
