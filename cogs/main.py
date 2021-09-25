@@ -138,12 +138,6 @@ class main(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self,reaction,user):
         guild = user.guild
-        if reaction.message.channel.id == 886948853578878997:
-            if guild.get_role(298168855706992650) not in user.roles :
-                await reaction.remove(user)
-        if reaction.message.channel.id == 886948912005517352:
-            if guild.get_role(189833260157763593) not in user.roles :
-                await reaction.remove(user)
         if user.bot:
             return
         if reaction.emoji == ('🙅‍♂️'):
