@@ -66,7 +66,7 @@ class main(commands.Cog):
         if(ctx.author.voice):
             channel = ctx.author.voice.channel
             name = channel.name
-            Invite = await channel.create_invite()
+            Invite = await channel.create_invite(max_age=3600)
             embed = discord.Embed()
             link = "["+name+"]("+str(Invite)+")"
             embed.description = text+"\n"+link
